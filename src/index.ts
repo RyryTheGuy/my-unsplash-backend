@@ -3,6 +3,7 @@ import cors from 'cors';
 import { connectToMongoDB } from './utils/mongodb';
 import config from './utils/config';
 import middleware from './utils/middleware';
+require('express-async-errors');
 
 import imageRouter from './routes/images';
 
@@ -21,7 +22,7 @@ app.use(cors(options));
 app.use(express.json());
 // app.use(express.static('build'));
 
-app.use('/', imageRouter);
+app.use('/images', imageRouter);
 
 app.use(middleware.unknownEndpoint);
 

@@ -2,7 +2,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import mongoose from 'mongoose';
 
-const imageSchema = new mongoose.Schema({
+export interface IImageModel {
+  title: string;
+  url: string;
+  date: Date;
+}
+
+const imageSchema = new mongoose.Schema<IImageModel>({
   title: {
     type: String,
     required: true
@@ -25,4 +31,4 @@ imageSchema.set('toJSON', {
   }
 });
 
-export default mongoose.model('Image', imageSchema);
+export default mongoose.model<IImageModel>('Image', imageSchema);
