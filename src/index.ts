@@ -7,20 +7,13 @@ require('express-async-errors');
 
 import imageRouter from './routes/images';
 
-/* todo: add utility files (config, middleware, mongoose)
-  - Install mongoose and prepare a database for the project
-  - Add a get route for getting all image urls
-  - Add a post route for uploading a new url to the database
-  - Add a delete route for removing a url from the database
-*/
-
 const app = express();
 const options: cors.CorsOptions = { origin: ['http://localhost:3000'] };
 connectToMongoDB();
 
 app.use(cors(options));
 app.use(express.json());
-// app.use(express.static('build'));
+app.use(express.static('build'));
 
 app.use('/images', imageRouter);
 
